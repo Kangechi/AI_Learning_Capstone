@@ -1,0 +1,34 @@
+# Python virtual environments — never commit these
+backend/venv/
+api/venv/
+api/env/
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django database — this is local only
+backend/db.sqlite3
+
+# Django media and static files
+backend/media/
+backend/staticfiles/
+
+# Environment variable files — contain secrets
+.env
+*.env
+
+# Node modules — too large, always regenerated
+frontend/node_modules/
+
+# Vite build output
+frontend/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
