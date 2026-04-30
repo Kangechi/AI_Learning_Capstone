@@ -1,28 +1,31 @@
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 import './App.css'
+import StoryList from './Storylist'
+import StoryReader from './StoryReader'
 
-function App() {
-  const [stories, setStories] = useState([])
-  const [loading, setLoading] = useState(true)
+function App()  {
+  const [selectedStory, setSelectedStory] = useState(null)
 
-  useEffect(() => {
-    fetch("http://localhost:8000/stories")
-    .then(response => response.json())
-    .then(data => {
-      setStories(data)
-      setLoading(false)
-    })
-  }, [])
+  console.log("Selected Story is:", selectedStory)
 
-  if (loading) return <p> Loading Stories .....</p>
+
+
   return (
-    <div>
-      <h1>Choose a story</h1>
-      {stories.map(story => (
-        <p key={story.id}>{story.title}</p>
-      ))}
+    <div className='app'>
+      {
+        selectedStory === null ? (
+      
+      <StoryList onSelectStory={setSelectedStory}/>
+    ): (
+      <StoryReader 
+      story={ setSelectedStory}
+      onBack={() => setSelectedStory(null)}
+      />
+    )}
+
     </div>
   )
 
-
+ 
 }
+export default App
